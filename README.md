@@ -1,10 +1,10 @@
 # sysgenx-rom
-Mesh motion using FEniCSx
+Mesh deformation using FEniCSx
 
-Harmonic mesh motion
+Harmonic mesh deformation
 
-![](https://github.com/Wells-Group/sysgenx-rom/blob/mesh_deformation/harmonic_extension.gif)
+![](https://github.com/niravshah241/MDFEniCSx/blob/main/harmonic_deformation_data/harmonic_mesh_deformation.gif)
 
-Linear elasticity mesh motion
+Linear elasticity mesh deformation
 
-![](https://github.com/Wells-Group/sysgenx-rom/blob/mesh_deformation/linear_elastic.gif)
+![](https://github.com/niravshah241/MDFEniCSx/blob/main/linear_elastic_deformation_data/linear_elastic_mesh_deformation.gif)
