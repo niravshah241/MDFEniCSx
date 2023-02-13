@@ -1,4 +1,4 @@
-# sysgenx-rom
+# MDFEniCSx
 Mesh deformation using FEniCSx
 
 Harmonic mesh deformation
