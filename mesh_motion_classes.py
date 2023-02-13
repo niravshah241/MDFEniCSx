@@ -96,7 +96,7 @@ class HarmonicMeshMotion(MeshDeformation):
         super().__init__(mesh, boundaries, bc_markers_list, bc_function_list, reset_reference, is_deformation)
     
     def bilinear_form(self):
-        # Assemble bilinear form for of harmonic mesh motion
+        # Assemble bilinear form for harmonic mesh motion
         u = self._trial_function
         v = self._test_function
         return dolfinx.fem.form(dolfinx.fem.form(ufl.inner(ufl.grad(u),ufl.grad(v))*ufl.dx))
@@ -115,7 +115,7 @@ class LinearElasticMeshMotion(MeshDeformation):
         self._subdomains = subdomains
     
     def epsilon(self,u_func):
-        # Strain computation at given fidplacement field u_func
+        # Strain computation at given displacement field u_func
         return ufl.sym(ufl.grad(u_func))
     
     def sigma(self, u_func):
@@ -135,7 +135,7 @@ class LinearElasticMeshMotion(MeshDeformation):
         return dolfinx.fem.form(dolfinx.fem.form(ufl.inner(self.sigma(u),self.epsilon(v)) * ufl.dx))
     
     def linear_form(self):
-        # Assemble linear elastic equation with zero source term
+        # Assemble linear form of linear elastic equation with zero source term
         v = self._test_function
         return dolfinx.fem.form(dolfinx.fem.form(ufl.dot(dolfinx.fem.Constant(self._mesh,PETSc.ScalarType((0.,)*self._mesh.geometry.dim)),v)*ufl.dx))
 
