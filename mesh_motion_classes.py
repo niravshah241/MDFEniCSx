@@ -28,11 +28,11 @@ class MeshDeformation(object):
         self._trial_function = ufl.TrialFunction(self._function_space) # Trial function on mesh deformation function space
     
     def __enter__(self):
-        gdim = self._mesh.geometry.dim # TODO geometry.dim or topology.dim
+        gdim = self._mesh.geometry.dim
         bcs = self.assemble_bcs() # Assemble BCs
         self.shape_parametrization = self.solve() # Compute shape parametrization
         if self._is_deformation == True:
-            self._mesh.geometry.x[:,:self._mesh.geometry.dim] += self.shape_parametrization.x.array.reshape(self._reference_coordinates.shape[0],gdim) # TODO 1. geometry.dim or topology.dim 2. Understand why francesco used dofmap.index_map.bs and not gdim? 3. In rbnicsx mesh_motion deformation, Francesco used localForm() 4. Problems in parallel(??)
+            self._mesh.geometry.x[:,:self._mesh.geometry.dim] += self.shape_parametrization.x.array.reshape(self._reference_coordinates.shape[0],gdim)
         else:
             self._mesh.geometry.x[:,:self._mesh.geometry.dim] = self.shape_parametrization.x.array.reshape(self._reference_coordinates.shape[0],gdim) 
         return self
@@ -79,11 +79,10 @@ class MeshDeformation(object):
         ksp.getPC().setFactorSolverType("mumps")
         ksp.setFromOptions()
         ksp.solve(F, uh.vector)
-        #uh.vector.ghostUpdate(addv=PETSc.InsertMode.INSERT, mode=PETSc.ScatterMode.FORWARD) # TODO scatter_forward or ghostUpdate
-        uh.x.scatter_forward()
+        uh.x.scatter_forward() # NOTE Equivalent to uh.vector.ghostUpdate(addv=PETSc.InsertMode.INSERT, mode=PETSc.ScatterMode.FORWARD)
         return uh
     
-    def __exit__(self, exception_type, exception_value, traceback): # TODO understand exception_type, exception_value, traceback
+    def __exit__(self, exception_type, exception_value, traceback): # TODO exception_type, exception_value, traceback
         # Exit of context
         if self._reset_reference == True:
             self._mesh.geometry.x[:] = self._reference_coordinates
