@@ -30,8 +30,8 @@ $$\text{On } \Gamma_4 \cup \Gamma_{10} \cup \Gamma_6 \cup \Gamma_{11}: \ (0., 0.
 
 ```HarmonicMeshMotion``` takes the following arguments:
  * Reference mesh as dolfinx mesh
- * Boundary markers as List
- * Deformation applied on each boundary List (Same order as boundary markers)
+ * Boundary markers as List of integers
+ * Deformation applied on each boundary as List of functions (Same order as boundary markers)
  * Keyword arguments ```reset_reference``` and ```is_deformation```
 
 The mesh generation file is given in ```mesh_data/mesh.py``` which stores the mesh in same directory. The harmonic mesh motion implementation is given in ```harmonic_mesh_motion.py```. We print first few mesh points to observe an important difference. When the code is run with ```mpiexec -n 1 python3 harmonic_mesh_motion.py```, following output is produced.
