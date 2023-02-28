@@ -122,7 +122,8 @@ class HarmonicMeshMotion(MeshDeformation):
     def __init__(self, mesh, boundaries, bc_markers_list, bc_function_list,
                  reset_reference=False, is_deformation=True):
         super().__init__(mesh, boundaries, bc_markers_list, bc_function_list,
-                         reset_reference, is_deformation)
+                         reset_reference=reset_reference,
+                         is_deformation=is_deformation)
 
     def bilinear_form(self):
         # Assemble bilinear form for harmonic mesh motion
@@ -145,7 +146,8 @@ class LinearElasticMeshMotion(MeshDeformation):
                  bc_function_list, young_modulus_list, poisson_ratio_list,
                  reset_reference=False, is_deformation=True):
         super().__init__(mesh, boundaries, bc_markers_list, bc_function_list,
-                         reset_reference, is_deformation)
+                         reset_reference=reset_reference,
+                         is_deformation=is_deformation)
         self._young_modulus_list = young_modulus_list
         self._poisson_ratio_list = poisson_ratio_list
         self._subdomains = subdomains
