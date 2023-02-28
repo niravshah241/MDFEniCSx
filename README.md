@@ -15,6 +15,12 @@ Linear elastic mesh deformation
 
 - [Paraview](https://www.paraview.org/)
 
+### Installation
+
+Run the following command in the directory containing setup.py
+
+```pip3 install .```
+
 ## Tutorials
 
 The tutorials are provided in the "demo" folder. Currently, the tutorials are provided for following:
