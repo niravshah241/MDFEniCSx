@@ -9,17 +9,18 @@ Linear elastic mesh deformation
 ## Dependencies
 
 - DOLFINx (v0.6.0.0)
+- Gmsh
 
 ### Other
 
-- [Paraview] (https://www.paraview.org/)
+- [Paraview](https://www.paraview.org/)
 
-# Tutorials
+## Tutorials
 
 The tutorials are provided in the "demo" folder. Currently, the tutorials are provided for following:
 
-- Harmonic mesh motion
-- Linear elastic mesh motion
+- Harmonic mesh deformation
+- Linear elastic mesh deformation
 
 ## Disclaimer
 
