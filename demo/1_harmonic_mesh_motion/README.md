@@ -42,7 +42,7 @@ $$\text{On } \Gamma_4 \cup \Gamma_{10} \cup \Gamma_6 \cup \Gamma_{11}: \ (x, y)$
  * Deformation applied on each boundary as List of functions (Same order as boundary markers)
  * Keyword arguments ```reset_reference``` and ```is_deformation```
 
-The mesh generation file is given in ```mesh_data/mesh.py``` which stores the mesh in same directory. The harmonic mesh motion implementation is given in ```harmonic_mesh_motion.py```. We print first few mesh points to observe an important difference. When the code is run with ```mpiexec -n 1 python3 harmonic_mesh_motion.py```, following output is produced.
+The mesh generation file is given in ```mesh_data/mesh.py``` which stores the mesh in same directory. The harmonic mesh motion implementation is given in ```harmonic_mesh_motion.py```. We first set the **displacements** boundary contions with ```is_deformation=True```. We print first few mesh points to observe an important difference. When the code is run with ```mpiexec -n 1 python3 harmonic_mesh_motion.py```, following output is produced.
 
 ```
 Mesh points before deformation
@@ -61,7 +61,7 @@ Mesh points after first deformation
  [0.0625     0.07653669 0.        ]
  [0.         0.0625     0.        ]
  [0.125      0.15808655 0.        ]]
-Mesh points after exit from first deformation context
+Mesh points after exit from context with reset_reference=True
 [[0.     0.     0.    ]
  [0.125  0.     0.    ]
  [0.     0.125  0.    ]
@@ -77,7 +77,7 @@ Mesh points after second deformation
  [0.0625     0.07653669 0.        ]
  [0.         0.0625     0.        ]
  [0.125      0.15808655 0.        ]]
-Mesh points after exit from second deformation context
+Mesh points after exit from context with reset_reference=False
 [[0.         0.         0.        ]
  [0.125      0.14142136 0.        ]
  [0.         0.125      0.        ]
@@ -85,11 +85,15 @@ Mesh points after exit from second deformation context
  [0.0625     0.07653669 0.        ]
  [0.         0.0625     0.        ]
  [0.125      0.15808655 0.        ]]
+
 ```
 
 As can be observed, after first mesh deformation, the mesh returns to the reference mesh configuration upon exit from the mesh deformation context. While, after the second mesh deformation, the mesh remains deformed upon exit from the mesh deformation context. This difference can be explained by the keyword argument ```reset_reference```.
 
 When ```reset_reference=True```, the mesh returns to the reference mesh configuration upon exit from the mesh deformation context. Instead, when ```reset_reference=False```, the mesh remains deformed and does not return to the reference mesh configuration upon exit from the mesh deformation context.
+
+* **Deformed mesh**: 
+![alt text](https://github.com/niravshah241/MDFEniCSx/blob/main/demo/1_harmonic_mesh_motion/deformed_mesh.png)
 
 It should also be noted that the keyword argument ```is_deformation``` is set to ```True``` in both the cases. This is because, the **displacement** was specified on the boundary instead of **new coordinates** after deformation. If we apply the boundary condition corresponding to **new coordinates** after deformation we obtain the same result by specifying ```is_deformation=False```.
 
