@@ -21,7 +21,7 @@ Consider a square domain with vertices (0, 0) -- (0, 1) -- (1, 1) -- (1, 0) as s
 
 ![alt text](https://github.com/niravshah241/MDFEniCSx/blob/main/demo/1_harmonic_mesh_deformation/mesh_data/boundaries.png)
 
-We define below mesh **displacements**:
+We define below mesh **displacements** boundary conditions:
 
 $$\text{On } \Gamma_1 \cup \Gamma_5: \ (0., \ 0.2 sin(2 \pi x))$$
 
@@ -29,7 +29,7 @@ $$\text{On } \Gamma_9 \cup \Gamma_{12}: \ (0., \ 0.1 sin(2 \pi x))$$
 
 $$\text{On } \Gamma_4 \cup \Gamma_{10} \cup \Gamma_6 \cup \Gamma_{11}: \ (0., \ 0.)$$
 
-Like ```HarmonicMeshMotion```, we can also define below **new coordinates** boundary condition:
+Like ```HarmonicMeshMotion```, we can also define below **new coordinates** boundary conditions:
 
 $$\text{On } \Gamma_1 \cup \Gamma_5: \ (x, \ y + 0.2 sin(2 \pi x))$$
 
@@ -37,7 +37,7 @@ $$\text{On } \Gamma_9 \cup \Gamma_{12}: \ (x, \ y + 0.1 sin(2 \pi x))$$
 
 $$\text{On } \Gamma_4 \cup \Gamma_{10} \cup \Gamma_6 \cup \Gamma_{11}: \ (x, \ y)$$
 
-We define below mesh Young's modulus $(E)$ and Poisson's ratio $(\nu)$:
+We define below Young's modulus $(E)$ and Poisson's ratio $(\nu)$:
 $$\text{In } \Omega_1: E = 1100e6 \ , \ \nu = 0.3$$
 
 $$\text{In } \Omega_2: E = 110e6 \ , \ \nu = 0.2$$
