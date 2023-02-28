@@ -8,8 +8,8 @@ Linear elastic mesh deformation
 
 ## Dependencies
 
-- DOLFINx (v0.6.0.0)
-- Gmsh
+- [DOLFINx](https://fenicsproject.org/)
+- [Gmsh](https://gmsh.info/)
 
 ### Other
 
