@@ -7,5 +7,5 @@ setup(
     url='https://github.com/niravshah241/MDFEniCSx',
     author='Nirav Shah',
     author_email='niravshahcolab@gmail.com',
-    packages=['mdfenicsx']
+    packages=['mdfenicsx'],
 )
