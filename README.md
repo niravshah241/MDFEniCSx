@@ -1,5 +1,4 @@
-# MDFEniCSx
-Mesh deformation using FEniCSx
+# MDFEniCSx: Mesh Deformation using FEniCSx
 
 Harmonic mesh deformation
 ![](https://github.com/niravshah241/MDFEniCSx/blob/main/mdfenicsx/harmonic_mesh_motion.gif)
@@ -15,7 +14,7 @@ Linear elastic mesh deformation
 
 - [Paraview] (https://www.paraview.org/)
 
-### Tutorials
+# Tutorials
 
 The tutorials are provided in the "demo" folder. Currently, the tutorials are provide for following mesh deformations.
 
