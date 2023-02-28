@@ -43,6 +43,13 @@ $$\text{On } \Gamma_4 \cup \Gamma_{10} \cup \Gamma_6 \cup \Gamma_{11}: \ (x, y)$
  * Deformation applied on each boundary as List of functions (Same order as boundary markers)
  * Keyword arguments ```reset_reference``` and ```is_deformation```
 
+```
+with HarmonicMeshMotion(mesh, facet_tags, [1, 5, 9, 12, 4, 6, 10, 11],
+                        [bc_bottom, bc_bottom, bc_top, bc_top, bc_side,
+                         bc_side, bc_side, bc_side], reset_reference=True,
+                        is_deformation=True):
+```
+
 The mesh generation file is given in ```mesh_data/mesh.py``` which stores the mesh in same directory. The harmonic mesh motion implementation is given in ```harmonic_mesh_motion.py```. We first set the **displacements** boundary contions with ```is_deformation=True```. We print first few mesh points to observe an important difference. When the code is run with ```mpiexec -n 1 python3 harmonic_mesh_motion.py```, following output is produced.
 
 ```

@@ -58,6 +58,16 @@ $$\text{In } \Omega_4: E = 0.011e6 \ , \ \nu = 0.05$$
  * Poisson's ratio as list (In increasing order of subdomain number)
  * Keyword arguments ```reset_reference``` and ```is_deformation```
 
+```
+with LinearElasticMeshMotion(mesh, cell_tags, facet_tags,
+                             [1, 5, 9, 12, 4, 6, 10, 11],
+                             [bc_bottom, bc_bottom, bc_top,
+                              bc_top, bc_side, bc_side,
+                              bc_side, bc_side], E, nu,
+                             reset_reference=True,
+                             is_deformation=True):
+```
+
 The mesh generation file is given in ```mesh_data/mesh.py``` which stores the mesh in same directory. The linear elastic mesh motion implementation is given in ```linear_elastic_mesh_motion.py```. We print first few mesh points and set keyword argument ```is_deformation=True``` with **displacement** boundary conditions. When the code is run with ```mpiexec -n 1 python3 linear_elastic_mesh_motion.py```, following output is produced.
 
 ```
