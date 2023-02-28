@@ -17,7 +17,7 @@ Linear elastic mesh deformation
 
 ### Tutorials
 
-The tutorials are provide in the "demo" folder.
+The tutorials are provided in the "demo" folder. Currently, the tutorials are provide for following mesh deformations.
 
 - Harmonic mesh motion
 - Linear elastic mesh motion
