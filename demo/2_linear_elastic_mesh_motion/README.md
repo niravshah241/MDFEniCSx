@@ -35,7 +35,7 @@ $$\text{On } \Gamma_9 \cup \Gamma_{12}: \ (x, y + 0.1 sin(2 \pi x))$$
 $$\text{On } \Gamma_4 \cup \Gamma_{10} \cup \Gamma_6 \cup \Gamma_{11}: \ (x, y)$$
 
 We define below mesh Young's modulus $(E)$ and Poisson's ratio $(\nu)$:
-$$\text{In } \Omega_1: E = 1100e6, 110e6, 1.1e6, 0.011e6 \ , \ \nu = 0.3$$
+$$\text{In } \Omega_1: E = 1100e6 \ , \ \nu = 0.3$$
 
 $$\text{In } \Omega_2: E = 110e6 \ , \ \nu = 0.2$$
 
