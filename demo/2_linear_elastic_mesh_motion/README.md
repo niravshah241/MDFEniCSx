@@ -1,4 +1,4 @@
-## Harmonic Mesh Deformation ##
+## Linear Elastic Mesh Deformation ##
 
 ### 1. Problem statement
 
@@ -26,13 +26,8 @@ $$\text{On } \Gamma_9 \cup \Gamma_{12}: \ (0., 0.1 sin(2 \pi x))$$
 
 $$\text{On } \Gamma_4 \cup \Gamma_{10} \cup \Gamma_6 \cup \Gamma_{11}: \ (0., 0.)$$
 
-Instead of **displacements**, we could also specify the **new coordinates** after deformation on the boundary:
-
-$$\text{On } \Gamma_1 \cup \Gamma_5: \ (x, y + 0.2 sin(2 \pi x))$$
-
-$$\text{On } \Gamma_9 \cup \Gamma_{12}: \ (x, y + 0.1 sin(2 \pi x))$$
-
-$$\text{On } \Gamma_4 \cup \Gamma_{10} \cup \Gamma_6 \cup \Gamma_{11}: \ (x, y)$$
+We define below mesh Young's modulus $(E)$ and Poisson's ratio $(\nu)$:
+$$\text{In } \Omega_1: E = $$
 
 ### 2. Implementation
 
@@ -91,15 +86,4 @@ As can be observed, after first mesh deformation, the mesh returns to the refere
 
 When ```reset_reference=True```, the mesh returns to the reference mesh configuration upon exit from the mesh deformation context. Instead, when ```reset_reference=False```, the mesh remains deformed and does not return to the reference mesh configuration upon exit from the mesh deformation context.
 
-It should also be noted that the keyword argument ```is_deformation``` is set to ```True``` in both the cases. This is because, the **displacement** was specified on the boundary instead of **new coordinates** after deformation. If we apply the boundary condition corresponding to **new coordinates** after deformation we obtain the same result by specifying ```is_deformation=False```.
-
-```
-Mesh points with is_deformation=False
-[[-2.94902991e-17 -2.42861287e-17  0.00000000e+00]
- [ 1.25000000e-01  1.41421356e-01  0.00000000e+00]
- [-2.94902991e-17  1.25000000e-01  0.00000000e+00]
- [ 1.25000000e-01  1.89714481e-01  0.00000000e+00]
- [ 6.25000000e-02  7.65366865e-02  0.00000000e+00]
- [ 5.20417043e-18  6.25000000e-02  0.00000000e+00]
- [ 1.25000000e-01  1.58086549e-01  0.00000000e+00]]
-```
+It should also be noted that the keyword argument ```is_deformation``` is set to ```True``` in both the cases. This keyword argument is explained in detail in the **Linear Elastic Mesh Deformation**.

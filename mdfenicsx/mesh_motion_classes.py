@@ -157,7 +157,7 @@ class LinearElasticMeshMotion(MeshDeformation):
     def sigma(self, u_func):
         # Stress computation at given displacement field u_func
         # DG function space for discontinuous material property
-        material_function_space = dolfinx.fem.FunctionSpace(mesh, ("DG", 0))
+        material_function_space = dolfinx.fem.FunctionSpace(self._mesh, ("DG", 0))
         # Function for Lam\'e parameter lambda = E / (2 * (1 + \nu))
         lambda_ = dolfinx.fem.Function(material_function_space)
         # Function for Lam\'e parameter mu = (E * \nu) / ((1-2*\nu) * (1+\nu))
