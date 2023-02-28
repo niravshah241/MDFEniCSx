@@ -59,6 +59,9 @@ $$\text{In } \Omega_4: E = 0.011e6 \ , \ \nu = 0.05$$
  * Keyword arguments ```reset_reference``` and ```is_deformation```
 
 ```
+E = [1100e6, 110e6, 1.1e6, 0.011e6]
+nu = [0.3, 0.2, 0.1, 0.05]
+
 with LinearElasticMeshMotion(mesh, cell_tags, facet_tags,
                              [1, 5, 9, 12, 4, 6, 10, 11],
                              [bc_bottom, bc_bottom, bc_top,
