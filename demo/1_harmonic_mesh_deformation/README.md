@@ -6,8 +6,8 @@ Consider a square domain with vertices (0, 0) -- (0, 1) -- (1, 1) -- (1, 0) as s
 
 * **Reference domain** and **Reference subdomains**:
 
-![alt text](https://github.com/niravshah241/MDFEniCSx/blob/main/demo/1_harmonic_mesh_motion/mesh_data/domain.png)
-![alt text](https://github.com/niravshah241/MDFEniCSx/blob/main/demo/1_harmonic_mesh_motion/mesh_data/subdomains.png)
+![alt text](https://github.com/niravshah241/MDFEniCSx/blob/main/demo/1_harmonic_mesh_deformation/mesh_data/domain.png)
+![alt text](https://github.com/niravshah241/MDFEniCSx/blob/main/demo/1_harmonic_mesh_deformation/mesh_data/subdomains.png)
 
 * **Reference mesh** and **Reference boundaries**: 
 
@@ -19,7 +19,7 @@ Consider a square domain with vertices (0, 0) -- (0, 1) -- (1, 1) -- (1, 0) as s
 
 6, 11: Right boundaries ($\Gamma_6, \Gamma_{11}$)
 
-![alt text](https://github.com/niravshah241/MDFEniCSx/blob/main/demo/1_harmonic_mesh_motion/mesh_data/boundaries.png)
+![alt text](https://github.com/niravshah241/MDFEniCSx/blob/main/demo/1_harmonic_mesh_deformation/mesh_data/boundaries.png)
 
 We define below mesh **displacements**:
 
@@ -104,7 +104,7 @@ As can be observed, after first mesh deformation, the mesh returns to the refere
 When ```reset_reference=True```, the mesh returns to the reference mesh configuration upon exit from the mesh deformation context. Instead, when ```reset_reference=False```, the mesh remains deformed and does not return to the reference mesh configuration upon exit from the mesh deformation context.
 
 * **Deformed mesh**: 
-![alt text](https://github.com/niravshah241/MDFEniCSx/blob/main/demo/1_harmonic_mesh_motion/deformed_mesh.png)
+![alt text](https://github.com/niravshah241/MDFEniCSx/blob/main/demo/1_harmonic_mesh_deformation/deformed_mesh.png)
 
 It should also be noted that the keyword argument ```is_deformation``` is set to ```True``` in both the cases. This is because, the **displacement** was specified on the boundary instead of **new coordinates** after deformation. If we apply the boundary condition corresponding to **new coordinates** after deformation we obtain the same result by specifying ```is_deformation=False```.
 

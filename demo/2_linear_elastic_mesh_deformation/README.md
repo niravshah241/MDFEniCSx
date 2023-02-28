@@ -6,8 +6,8 @@ Consider a square domain with vertices (0, 0) -- (0, 1) -- (1, 1) -- (1, 0) as s
 
 * **Reference domain** $\Omega$ and **Reference subdomains** $\lbrace \Omega_i \rbrace_{i=1}^{4}$:
 
-![alt text](https://github.com/niravshah241/MDFEniCSx/blob/main/demo/1_harmonic_mesh_motion/mesh_data/domain.png)
-![alt text](https://github.com/niravshah241/MDFEniCSx/blob/main/demo/1_harmonic_mesh_motion/mesh_data/subdomains.png)
+![alt text](https://github.com/niravshah241/MDFEniCSx/blob/main/demo/1_harmonic_mesh_deformation/mesh_data/domain.png)
+![alt text](https://github.com/niravshah241/MDFEniCSx/blob/main/demo/1_harmonic_mesh_deformation/mesh_data/subdomains.png)
 
 * **Reference mesh** and **Reference boundaries**: 
 
@@ -19,7 +19,7 @@ Consider a square domain with vertices (0, 0) -- (0, 1) -- (1, 1) -- (1, 0) as s
 
 6, 11: Right boundaries ($\Gamma_6, \Gamma_{11}$)
 
-![alt text](https://github.com/niravshah241/MDFEniCSx/blob/main/demo/1_harmonic_mesh_motion/mesh_data/boundaries.png)
+![alt text](https://github.com/niravshah241/MDFEniCSx/blob/main/demo/1_harmonic_mesh_deformation/mesh_data/boundaries.png)
 
 We define below mesh **displacements**:
 
@@ -117,7 +117,7 @@ As can be observed, ```reset_reference``` restores the mesh upon exit from mesh 
 
 
 * **Deformed mesh**: 
-![alt text](https://github.com/niravshah241/MDFEniCSx/blob/main/demo/2_linear_elastic_mesh_motion/deformed_mesh.png)
+![alt text](https://github.com/niravshah241/MDFEniCSx/blob/main/demo/2_linear_elastic_mesh_deformation/deformed_mesh.png)
 
 
 However, when **new coordinates** boundary conditions are used with ```is_deformation=False``` instead of **displacements** boundary conditions with ```is_deformation=True```, the behavior is different from the ```HarmonicMeshMotion```.
