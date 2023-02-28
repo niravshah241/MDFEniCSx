@@ -6,7 +6,7 @@ import numpy as np
 from mpi4py import MPI
 
 
-np.set_printoptions(formatter={'float_kind':"{:.3f}".format})
+np.set_printoptions(formatter={'float_kind': "{:.3f}".format})
 
 # Read mesh
 # Mesh geometric dimensions
@@ -23,7 +23,7 @@ mesh, cell_tags, facet_tags = \
 # Store reference mesh
 if mesh.comm.Get_rank() == 0:
     with dolfinx.io.XDMFFile(mesh.comm, "linear_elastic/reference_mesh.xdmf",
-                            "w") as reference_mesh_file:
+                             "w") as reference_mesh_file:
         reference_mesh_file.write_mesh(mesh)
 
 if mesh.comm.Get_rank() == 0:
@@ -37,9 +37,12 @@ E = [1100e6, 110e6, 1.1e6, 0.011e6]
 nu = [0.3, 0.2, 0.1, 0.05]
 
 # Boundary conditions for linear elastic mesh deformation
+
+
 # Bottom boundaries
 def bc_bottom(x):
     return (0. * x[0], 0.2 * np.sin(x[0] * 2 * np.pi))
+
 
 # Top boundaries
 def bc_top(x):
@@ -49,6 +52,7 @@ def bc_top(x):
 # Side boundaries
 def bc_side(x):
     return (0. * x[0], 0. * x[1])
+
 
 # Mesh deformation with is_deformation=True
 with LinearElasticMeshMotion(mesh, cell_tags, facet_tags,
@@ -62,7 +66,7 @@ with LinearElasticMeshMotion(mesh, cell_tags, facet_tags,
     if mesh.comm.Get_rank() == 0:
         with dolfinx.io.XDMFFile(mesh.comm,
                                  "linear_elastic/deformed_mesh.xdmf",
-                                "w") as deformed_mesh_file:
+                                 "w") as deformed_mesh_file:
             deformed_mesh_file.write_mesh(mesh)
     if mesh.comm.Get_rank() == 0:
         print("Mesh points after first deformation")
@@ -104,9 +108,12 @@ mesh, cell_tags, facet_tags = \
                                     gmsh_model_rank, gdim=gdim)
 
 # Boundary conditions for linear elastic mesh deformation
+
+
 # Bottom boundaries
 def bc_bottom(x):
     return (x[0], x[1] + 0.2 * np.sin(x[0] * 2 * np.pi))
+
 
 # Top boundaries
 def bc_top(x):
@@ -116,6 +123,7 @@ def bc_top(x):
 # Side boundaries
 def bc_side(x):
     return (x[0], x[1])
+
 
 # Mesh deformation with is_deformation=False
 with LinearElasticMeshMotion(mesh, cell_tags, facet_tags,
