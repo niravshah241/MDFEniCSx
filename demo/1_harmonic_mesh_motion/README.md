@@ -12,8 +12,11 @@ Consider a square domain with vertices (0, 0) -- (0, 1) -- (1, 1) -- (1, 0) as s
 * **Reference mesh** and **Reference boundaries**: 
 
 1, 5: Bottom boundaries ($\Gamma_1, \Gamma_5$)
+
 9, 12: Top boundaries ($\Gamma_9, \Gamma_{12}$)
+
 4, 10: Left boundaries ($\Gamma_4, \Gamma_{10}$)
+
 6, 11: Right boundaries ($\Gamma_6, \Gamma_{11}$)
 
 ![alt text](https://github.com/niravshah241/MDFEniCSx/blob/main/demo/1_harmonic_mesh_motion/mesh_data/boundaries.png)
