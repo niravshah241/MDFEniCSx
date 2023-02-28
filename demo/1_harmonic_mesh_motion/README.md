@@ -38,6 +38,7 @@ $$\text{On } \Gamma_4 \cup \Gamma_{10} \cup \Gamma_6 \cup \Gamma_{11}: \ (x, y)$
 
 ```HarmonicMeshMotion``` takes the following arguments:
  * Reference mesh as dolfinx mesh
+ * Facet tags
  * Boundary markers as List of integers
  * Deformation applied on each boundary as List of functions (Same order as boundary markers)
  * Keyword arguments ```reset_reference``` and ```is_deformation```

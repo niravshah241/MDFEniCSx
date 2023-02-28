@@ -47,9 +47,9 @@ $$\text{In } \Omega_4: E = 0.011e6 \ , \ \nu = 0.05$$
 
 ```LinearElasticMeshMotion``` takes the following arguments:
  * Reference mesh as dolfinx mesh
- * Facet tags as list of integers
- * Cell tags as list of integers
- * Boundary markers as List of integersYoung's modulus
+ * Facet tags
+ * Cell tags
+ * Boundary markers as List of integers
  * Deformation applied on each boundary as List of functions (Same order as boundary markers)
  * Young's modulus as list (In increasing order of subdomain number)
  * Poisson's ratio as list (In increasing order of subdomain number)
