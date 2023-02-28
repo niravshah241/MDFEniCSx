@@ -23,19 +23,19 @@ Consider a square domain with vertices (0, 0) -- (0, 1) -- (1, 1) -- (1, 0) as s
 
 We define below mesh **displacements**:
 
-$$\text{On } \Gamma_1 \cup \Gamma_5: \ (0., 0.2 sin(2 \pi x))$$
+$$\text{On } \Gamma_1 \cup \Gamma_5: \ (0., \ 0.2 sin(2 \pi x))$$
 
-$$\text{On } \Gamma_9 \cup \Gamma_{12}: \ (0., 0.1 sin(2 \pi x))$$
+$$\text{On } \Gamma_9 \cup \Gamma_{12}: \ (0., \ 0.1 sin(2 \pi x))$$
 
-$$\text{On } \Gamma_4 \cup \Gamma_{10} \cup \Gamma_6 \cup \Gamma_{11}: \ (0., 0.)$$
+$$\text{On } \Gamma_4 \cup \Gamma_{10} \cup \Gamma_6 \cup \Gamma_{11}: \ (0., \ 0.)$$
 
 Instead of **displacements**, we could also specify the **new coordinates** after deformation on the boundary:
 
-$$\text{On } \Gamma_1 \cup \Gamma_5: \ (x, y + 0.2 sin(2 \pi x))$$
+$$\text{On } \Gamma_1 \cup \Gamma_5: \ (x, \ y + 0.2 sin(2 \pi x))$$
 
-$$\text{On } \Gamma_9 \cup \Gamma_{12}: \ (x, y + 0.1 sin(2 \pi x))$$
+$$\text{On } \Gamma_9 \cup \Gamma_{12}: \ (x, \ y + 0.1 sin(2 \pi x))$$
 
-$$\text{On } \Gamma_4 \cup \Gamma_{10} \cup \Gamma_6 \cup \Gamma_{11}: \ (x, y)$$
+$$\text{On } \Gamma_4 \cup \Gamma_{10} \cup \Gamma_6 \cup \Gamma_{11}: \ (x, \ y)$$
 
 ### 2. Implementation
 
