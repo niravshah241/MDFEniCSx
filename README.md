@@ -19,7 +19,9 @@ Linear elastic mesh deformation
 
 Run the following command in the directory containing setup.py
 
-```pip3 install .```
+```
+pip3 install .
+```
 
 ## Tutorials
 
