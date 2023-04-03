@@ -22,6 +22,7 @@ class MeshDeformation(object):
                         default=True --> deformation is computed
         '''
         assert len(bc_markers_list) == len(bc_function_list)
+        assert len(mesh.geometry.cmaps) == 1
         # Store coordinates of original mesh
         self._reference_coordinates = mesh.geometry.x.copy()
         # Current mesh and boundaries
@@ -37,7 +38,7 @@ class MeshDeformation(object):
         self._function_space = \
             dolfinx.fem.VectorFunctionSpace(self._mesh,
                                             ("CG",
-                                             self._mesh.geometry.cmap.degree))
+                                             self._mesh.geometry.cmaps[0].degree))
         # Test function on mesh deformation function space
         self._test_function = ufl.TestFunction(self._function_space)
         # Trial function on mesh deformation function space
