@@ -181,7 +181,7 @@ class LinearElasticMeshMotion(MeshDeformation):
                               (1 + self._poisson_ratio_list[i])),
                              dtype=PETSc.ScalarType)
         return lambda_ * ufl.nabla_div(u_func) * \
-            ufl.Identity(u_func.geometric_dimension()) + \
+            ufl.Identity(len(u_func)) + \
             2 * mu_ * self.epsilon(u_func)  # Linear elastic stress field
 
     def bilinear_form(self):
@@ -331,6 +331,7 @@ if __name__ == "__main__":
             dolfinx.io.XDMFFile(mesh.comm,
                                 f"linear_elastic/2D_deformed_mesh_{t}.xdmf",
                                 "w")
+        
 
         # Enter linear elastic mesh motion context
         with LinearElasticMeshMotion(mesh, cell_tags, facet_tags,
