@@ -1,3 +1,5 @@
 __pycache__/
 *.xdmf
 *.h5
+build
+mdfenicsx.egg-info
