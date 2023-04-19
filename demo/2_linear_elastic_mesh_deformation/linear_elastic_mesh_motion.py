@@ -21,10 +21,9 @@ mesh, cell_tags, facet_tags = \
                                     gmsh_model_rank, gdim=gdim)
 
 # Store reference mesh
-if mesh.comm.Get_rank() == 0:
-    with dolfinx.io.XDMFFile(mesh.comm, "linear_elastic/reference_mesh.xdmf",
-                             "w") as reference_mesh_file:
-        reference_mesh_file.write_mesh(mesh)
+with dolfinx.io.XDMFFile(mesh.comm, "linear_elastic/reference_mesh.xdmf",
+                         "w") as reference_mesh_file:
+    reference_mesh_file.write_mesh(mesh)
 
 if mesh.comm.Get_rank() == 0:
     print("Mesh points before deformation")
@@ -63,11 +62,10 @@ with LinearElasticMeshMotion(mesh, cell_tags, facet_tags,
                              reset_reference=True,
                              is_deformation=True):
     # Store deformed mesh
-    if mesh.comm.Get_rank() == 0:
-        with dolfinx.io.XDMFFile(mesh.comm,
-                                 "linear_elastic/deformed_mesh.xdmf",
-                                 "w") as deformed_mesh_file:
-            deformed_mesh_file.write_mesh(mesh)
+    with dolfinx.io.XDMFFile(mesh.comm,
+                             "linear_elastic/deformed_mesh.xdmf",
+                             "w") as deformed_mesh_file:
+        deformed_mesh_file.write_mesh(mesh)
     if mesh.comm.Get_rank() == 0:
         print("Mesh points after first deformation")
         print(mesh.geometry.x[:7, :])

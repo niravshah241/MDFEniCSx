@@ -6,6 +6,8 @@ import numpy as np
 from mpi4py import MPI
 
 
+np.set_printoptions(formatter={'float_kind': "{:.3f}".format})
+
 # Read mesh
 # Mesh geometric dimensions
 gdim = 2
@@ -18,12 +20,11 @@ mesh, cell_tags, facet_tags = \
     dolfinx.io.gmshio.read_from_msh("mesh_data/mesh.msh", mesh_comm,
                                     gmsh_model_rank, gdim=gdim)
 
-# Store reference mesh
-if mesh.comm.Get_rank() == 0:
-    with dolfinx.io.XDMFFile(mesh.comm, "harmonic/reference_mesh.xdmf",
-                             "w") as reference_mesh_file:
-        reference_mesh_file.write_mesh(mesh)
 
+# Store reference mesh
+with dolfinx.io.XDMFFile(mesh_comm, "harmonic/reference_mesh.xdmf",
+                         "w") as reference_mesh_file:
+    reference_mesh_file.write_mesh(mesh)
 
 # Mesh deformation based on displacement boundary
 # conditions
@@ -31,6 +32,8 @@ if mesh.comm.Get_rank() == 0:
 # Boundary conditions for harmonic mesh deformation
 
 # Bottom boundaries
+
+
 def bc_bottom(x):
     return (0. * x[0], 0.2 * np.sin(x[0] * 2 * np.pi))
 
@@ -49,16 +52,16 @@ if mesh.comm.Get_rank() == 0:
     print("Mesh points before deformation")
     print(mesh.geometry.x[:7, :])
 
+
 # Mesh deformation with reset_reference=True
 with HarmonicMeshMotion(mesh, facet_tags, [1, 5, 9, 12, 4, 6, 10, 11],
                         [bc_bottom, bc_bottom, bc_top, bc_top, bc_side,
                          bc_side, bc_side, bc_side], reset_reference=True,
                         is_deformation=True):
     # Store deformed mesh
-    if mesh.comm.Get_rank() == 0:
-        with dolfinx.io.XDMFFile(mesh.comm, "harmonic/deformed_mesh.xdmf",
-                                 "w") as deformed_mesh_file:
-            deformed_mesh_file.write_mesh(mesh)
+    with dolfinx.io.XDMFFile(mesh.comm, "harmonic/deformed_mesh.xdmf",
+                             "w") as deformed_mesh_file:
+        deformed_mesh_file.write_mesh(mesh)
 
     if mesh.comm.Get_rank() == 0:
         print("Mesh points after first deformation")

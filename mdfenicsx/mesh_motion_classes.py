@@ -35,10 +35,10 @@ class MeshDeformation(object):
         self._reset_reference = reset_reference
         self._is_deformation = is_deformation
         # FunctionSpace for mesh deformation function with degree = mesh order
+        function_space_degree = self._mesh.geometry.cmaps[0].degree
         self._function_space = \
             dolfinx.fem.VectorFunctionSpace(self._mesh,
-                                            ("CG",
-                                             self._mesh.geometry.cmaps[0].degree))
+                                            ("CG", function_space_degree))
         # Test function on mesh deformation function space
         self._test_function = ufl.TestFunction(self._function_space)
         # Trial function on mesh deformation function space
@@ -331,7 +331,6 @@ if __name__ == "__main__":
             dolfinx.io.XDMFFile(mesh.comm,
                                 f"linear_elastic/2D_deformed_mesh_{t}.xdmf",
                                 "w")
-        
 
         # Enter linear elastic mesh motion context
         with LinearElasticMeshMotion(mesh, cell_tags, facet_tags,
