@@ -10,9 +10,9 @@ The airfoil $\Omega_2$ is defined as the surface betweeen the upper curve  $(0.5
 
 $$t(x) = 0.6 (0.2969 \sqrt{x} - 0.126 x - 0.3516 x^{2}+ 0.2843 x{3} - 0.1036 x^{4})$$
 
-$$x_c(k) = 1.5 k (1-k)^{2} + 1.5 * (1-k) k^{2} + k^{3}$$
+$$x_c(k) = 1.5 k (1-k)^{2} + 1.5 (1-k) k^{2} + k^{3}$$
 
-$$y_c(k) = 0.3 k (1-k)^{2} + 0.15 * (1-k) k^{2}$$
+$$y_c(k) = 0.3 k (1-k)^{2} + 0.15 (1-k) k^{2}$$
 
 We define the boundary of the outer rectangular $\Gamma_1 = \partial \Omega_1$ and the boundary of the airfoil $\Gamma_2 = \partial \Omega_2$.
 
