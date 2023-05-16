@@ -6,12 +6,10 @@ We use the harmonic mesh motion and the linear elastic motion to deform the airf
 
 ### 1. Problem statement
 
-Consider a rectangular domain $ \Omega_1 $ with vertices (0, 0) -- (0, 1) -- (4, 1) -- (4, 0).
-In this rectangular domain we define an airfoil using the following parametrisation adapted from (Lu et al., [2018](https://doi.org/10.1016/j.ast.2018.04.025)):
+Consider a rectangular domain $\Omega_1$ with vertices (0, 0) -- (0, 1) -- (4, 1) -- (4, 0). In this rectangular domain we define an airfoil using the following parametrisation adapted from (Lu et al., [2018](https://doi.org/10.1016/j.ast.2018.04.025)).
 
 The airfoil $\Omega_2$ is defined as the surface betweeen the upper curve 
-$ (0.5+x_c(k), 0.5 + y_c(k) + t(x_c)(k)) $ and the lower curve $ (0.5+x_c(k), 0.5 + y_c(k) - t(x_c)(k)) $ with $ k \in [0, 1] $. Here, $t(x_c)(k)$ is the thickness of the airfoil and $(x_c(k), \ y_c(k))$ is the camber line of the airfoil.
-The thickness and camber line are parametrised as follows, using data from the NACA 2412 airfoil: 
+$ (0.5+x_c(k), 0.5 + y_c(k) + t(x_c)(k)) $ and the lower curve $(0.5+x_c(k), 0.5 + y_c(k) - t(x_c)(k))$ with $k \in [0,1]$. Here, $t(x_c)(k)$ is the thickness of the airfoil and $(x_c(k), \ y_c(k))$ is the camber line of the airfoil. The thickness and camber line are parametrised as follows, using data from the NACA 2412 airfoil: 
 
 $$t(x) = 0.6 (0.2969 \sqrt{x} - 0.126 x - 0.3516 x^{2}+ 0.2843 x{3} - 0.1036 x^{4})$$
 
@@ -27,13 +25,13 @@ A visualization of the reference mesh is given below.
 
 In all cases we use homogeneous Dirichlet boundary values to describe the fixed boundary of the rectangel. This can be described by zero-displacement boundary conditions:
 
-On $ \Gamma_1: \ (0, \ 0)$
+On $\Gamma_1: \ (0, \ 0)$
 
 For the deformation of the airfoil we define two types of boundary conditions, varying in the displacement factor:
 
-Version 1 on $ \Gamma_2: \ (0.1 x, \ 0)$
+Version 1 on $\Gamma_2: \ (0.1 x, \ 0)$
 
-Version 2 on $ \Gamma_2: \ (0.2 x, \ 0)$
+Version 2 on $\Gamma_2: \ (0.2 x, \ 0)$
 
 ### 2. Implementation
 
@@ -75,5 +73,3 @@ This is also the case for the linear elastic motion.
 We note that by using complex shapes in computational domains and too large deformations with respect to the mesh element size, the mesh quality can be affected negatively, leading to skewed elements. This is independent from the used method.
 
 Skewed elements can be avoided by deforming the whole computational domain, more precicely by explicitly defining inhomogeneous dirichlet boundary values for the boundary of the rectangle. Another possible workaround is to use homogeneous Neumann boundary values for the boundary of the rectangle. Both of these approaches lead to a deformed computational domain and not just a deformed airfoil.
-
-
