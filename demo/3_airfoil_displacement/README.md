@@ -8,8 +8,7 @@ We use the harmonic mesh motion and the linear elastic motion to deform the airf
 
 Consider a rectangular domain $\Omega_1$ with vertices (0, 0) -- (0, 1) -- (4, 1) -- (4, 0). In this rectangular domain we define an airfoil using the following parametrisation adapted from (Lu et al., [2018](https://doi.org/10.1016/j.ast.2018.04.025)).
 
-The airfoil $\Omega_2$ is defined as the surface betweeen the upper curve 
-$ (0.5+x_c(k), 0.5 + y_c(k) + t(x_c)(k)) $ and the lower curve $(0.5+x_c(k), 0.5 + y_c(k) - t(x_c)(k))$ with $k \in [0,1]$. Here, $t(x_c)(k)$ is the thickness of the airfoil and $(x_c(k), \ y_c(k))$ is the camber line of the airfoil. The thickness and camber line are parametrised as follows, using data from the NACA 2412 airfoil: 
+The airfoil $\Omega_2$ is defined as the surface betweeen the upper curve  $(0.5+x_c(k), 0.5 + y_c(k) + t(x_c)(k))$ and the lower curve $(0.5+x_c(k), 0.5 + y_c(k) - t(x_c)(k))$ with $k \in [0,1]$. Here, $t(x_c)(k)$ is the thickness of the airfoil and $(x_c(k), \ y_c(k))$ is the camber line of the airfoil. The thickness and camber line are parametrised as follows, using data from the NACA 2412 airfoil: 
 
 $$t(x) = 0.6 (0.2969 \sqrt{x} - 0.126 x - 0.3516 x^{2}+ 0.2843 x{3} - 0.1036 x^{4})$$
 
@@ -19,9 +18,7 @@ $$y_c(k) = 0.3 k (1-k)^{2} + 0.15 * (1-k) k^{2}$$
 
 We define the boundary of the outer rectangular $\Gamma_1 = \partial \Omega_1$ and the boundary of the airfoil $\Gamma_2 = \partial \Omega_2$.
 
-We define the reference domain $ \Omega = \Omega_1 \backslash \Omega_2$ and the corresponding mesh as reference mesh.
-The mesh consists of irregular quadrilaterals and is unstructured. In the neighbourhood of the airfoil we use a refined mesh.
-A visualization of the reference mesh is given below.
+We define the reference domain $\Omega = \Omega_1 \backslash \Omega_2$ and the corresponding mesh as reference mesh. The mesh consists of irregular quadrilaterals and is unstructured. In the neighbourhood of the airfoil we use a refined mesh. A visualization of the reference mesh is given below.
 
 In all cases we use homogeneous Dirichlet boundary values to describe the fixed boundary of the rectangel. This can be described by zero-displacement boundary conditions:
 
