@@ -34,6 +34,9 @@ def bc_internal(x):
     return (0. * x[0], 0.1 * np.sin(x[0] * 2. * np.pi))
 
 
+# External boundary
+
+
 def bc_external(x):
     return (0. * x[0], 0. * x[1])
 
@@ -49,9 +52,10 @@ with HarmonicMeshMotion(mesh, facet_tags, [1, 2, 3, 4, 5, 6, 7],
                              "w") as deformed_mesh_file:
         deformed_mesh_file.write_mesh(mesh)
 
-E = [1100e6, 0.011e6]
-nu = [0.3, 0.1]
+
 # Mesh deformation (Linear elastic mesh motion)
+E = [1100e6, 0.011e6]  # Young's modulus for each of the subdomains
+nu = [0.3, 0.1]  # Poisson's ratio for each of the subdomains
 with LinearElasticMeshMotion(mesh, cell_tags, facet_tags,
                              [1, 2, 3, 4, 5, 6, 7],
                              [bc_external, bc_external,
