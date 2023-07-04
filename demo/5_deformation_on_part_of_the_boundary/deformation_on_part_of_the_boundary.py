@@ -64,10 +64,12 @@ with HarmonicMeshMotion(mesh, boundaries, [1, 2, 3, 4, 5, 6, 7],
 # Mesh deformation (Linear Elastic Mesh Motion)
 E = [1100e6, 0.011e6]  # Young's modulus for each of the subdomains
 nu = [0.3, 0.1]  # Poisson's ratio for each of the subdomains
-with LinearElasticMeshMotion(mesh, subdomains, boundaries, [1, 2, 3, 4, 5, 6, 7],
+with LinearElasticMeshMotion(mesh, subdomains, boundaries, [1, 2, 3, 4, 5,
+                                                            6, 7],
                              [bc_fixed, bc_fixed, bc_fixed, bc_top,
                               bc_fixed, bc_fixed, bc_middle], E, nu,
-                        reset_reference=True, is_deformation=True):
-    with dolfinx.io.XDMFFile(mesh.comm, "part_boundary/deformed_linear_elastic.xdmf",
+                             reset_reference=True, is_deformation=True):
+    with dolfinx.io.XDMFFile(mesh.comm,
+                             "part_boundary/deformed_linear_elastic.xdmf",
                              "w") as deformed_mesh_file:
         deformed_mesh_file.write_mesh(mesh)
