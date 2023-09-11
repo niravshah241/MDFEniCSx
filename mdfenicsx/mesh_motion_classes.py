@@ -1,4 +1,5 @@
 import dolfinx
+from dolfinx.fem.petsc import *
 import ufl
 
 from mpi4py import MPI
