@@ -115,7 +115,7 @@ ksp.solve(F, uh.vector)
 uh.x.scatter_forward()
 ```
 
-Displacement field ```uh``` now corresponds to the displacement of each node. We add displacement field to the reference mesh cordinates. The deformed domain \tilde{\Omega} is given by:
+Displacement field ```uh``` now corresponds to the displacement of each node. We add displacement field to the reference mesh coordinates. The deformed domain $\tilde{\Omega}$ is given by:
 $$\tilde{x} = x + uh \ , \ \tilde{x} \in \tilde{\Omega} \ , \ x \in \Omega \ .$$
 ```
 mesh.geometry.x[:, :mesh.geometry.dim] += \
