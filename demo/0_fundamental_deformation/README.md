@@ -42,7 +42,7 @@ mesh, subdomains, boundaries = \
                                      gdim=gdim)
 ```
 
-We also store mesh coordinates of the reference mesh.
+We also store mesh coordinates of the reference mesh as ```reference_coordinates```.
 ```
 reference_coordinates = mesh.geometry.x.copy()
 ```
