@@ -2,7 +2,7 @@
 
 ### 1. Problem statement
 
-Consider a square domain with vertices (0, 0) -- (0, 1) -- (1, 1) -- (1, 0) as shown below. We also call this domain $\Omega$ as reference domain, corresponding mesh as reference mesh and deform it to $\tilde{\Omega}$. The purpose of this excercise is to demonstrate Harmonic mesh extension (Shamanskiy, A. et. al.)[https://doi.org/10.1007/s00466-020-01950-x]. We solve Laplace's equation on the reference domain to calculate pointwise mesh deformation based on the specified mesh deformation on the boundary.
+Consider a square domain with vertices (0, 0) -- (0, 1) -- (1, 1) -- (1, 0) as shown below. We also call this domain $\Omega$ as reference domain, corresponding mesh as reference mesh and deform it to $\tilde{\Omega}$. The purpose of this excercise is to demonstrate Harmonic mesh extension [Shamanskiy, A. et. al.](https://doi.org/10.1007/s00466-020-01950-x). We solve Laplace's equation on the reference domain to calculate pointwise mesh deformation based on the specified mesh deformation on the boundary.
 
 * **Reference domain** and **Reference subdomains**:
 
