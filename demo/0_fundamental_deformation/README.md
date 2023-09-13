@@ -120,15 +120,6 @@ $$\tilde{x} = x + uh \ , \ \tilde{x} \in \tilde{\Omega} \ , \ x \in \Omega \ .$$
 ```
 mesh.geometry.x[:, :mesh.geometry.dim] += \
     uh.x.array.reshape(reference_coordinates.shape[0], gdim)
-
-
-with dolfinx.io.XDMFFile(mesh.comm,
-                        f"deformed_mesh_data/deformed_mesh.xdmf",
-                        "w") as mesh_file_xdmf:
-    mesh_file_xdmf.write_mesh(mesh)
-    mesh_file_xdmf.write_meshtags(subdomains, mesh.geometry)
-    mesh_file_xdmf.write_meshtags(boundaries, mesh.geometry)
-
 ```
 
 * **Deformed mesh**: 
