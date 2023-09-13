@@ -89,7 +89,7 @@ for i in range(len(bc_markers)):
 # bc_list now contains boundary conditions
 ```
 
-We then solve Laplace's equation on the REFERENCE mesh to compute pointwise displacement field.
+We then solve Laplace's equation on the REFERENCE mesh to compute pointwise displacement field ```uh```.
 ```
 a_form = dolfinx.fem.form(ufl.inner(ufl.grad(u), ufl.grad(v))*ufl.dx)
 l_form = \
