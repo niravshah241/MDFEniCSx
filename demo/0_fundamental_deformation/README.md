@@ -128,7 +128,7 @@ mesh.geometry.x[:, :mesh.geometry.dim] += \
 
 
 
-To reset to the REFERENCE mesh configuration. We overwrite mesh cordinates with ```reference_coordinates```.
+To reset to the REFERENCE mesh configuration. We overwrite mesh coordinates with ```reference_coordinates```.
 ```
 mesh.geometry.x[:] = reference_coordinates
 ```
