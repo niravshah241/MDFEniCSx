@@ -128,7 +128,11 @@ with dolfinx.io.XDMFFile(mesh.comm,
     mesh_file_xdmf.write_mesh(mesh)
     mesh_file_xdmf.write_meshtags(subdomains, mesh.geometry)
     mesh_file_xdmf.write_meshtags(boundaries, mesh.geometry)
+
 ```
+
+* **Deformed mesh**: 
+![alt text](https://github.com/niravshah241/MDFEniCSx/blob/main/demo/0_fundamental_deformation/deformed_mesh.png)
 
 To reset to the REFERENCE mesh configuration. We overwrite mesh cordinates with ```reference_coordinates```.
 ```
