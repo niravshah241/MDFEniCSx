@@ -20,25 +20,27 @@ mesh, cell_tags, facet_tags = \
     dolfinx.io.gmshio.read_from_msh("mesh_data/mesh.msh",
                                     mesh_comm, gmsh_model_rank, gdim=gdim)
 
-control_points_x = np.linspace(1., 0., 61)
-coefficients_x = list()
-berstein_order = 3
-
-for k in range(berstein_order+1):
-    list_row = list()
-    for i in range(len(control_points_x)-1):
-        list_row.append(np.sin(control_points_x[i] * 2 * np.pi))
-    coefficients_x.append(list_row)
-
-control_points_y = np.linspace(0., 1., 3)
-coefficients_y = [[1, 1], [1, 1]]
-
-bp = scipy.interpolate.BPoly(coefficients_x, control_points_x)
-print(bp(0.22))
-
 reference_coordinates = mesh.geometry.x.copy()
-mesh.geometry.x[:, 1] += 0.1 * bp(mesh.geometry.x[:, 0])
+num_control_points = [4, 24, 51, 101]
 
-with dolfinx.io.XDMFFile(mesh.comm,
-                         f"ffd/2D_deformed_mesh.xdmf", "w") as mesh_file:
-    mesh_file.write_mesh(mesh)
+for cp in num_control_points:
+    control_points_x = np.linspace(0., 1., cp)
+    coefficients_x = \
+        np.vstack([np.sin(control_points_x[:-1]*2*np.pi),
+                   np.sin(control_points_x[1:]*2*np.pi)])
+    bp_x = scipy.interpolate.BPoly(coefficients_x, control_points_x)
+    mesh.geometry.x[:, 1] += 0.1 * bp_x(mesh.geometry.x[:, 0])
+
+    '''
+    control_points_y = np.linspace(0., 1., 27)
+    coefficients_y = \
+        np.vstack([np.sin(control_points_y[:-1]*2*np.pi),
+                np.sin(control_points_y[1:]*2*np.pi)])
+    bp_y = scipy.interpolate.BPoly(coefficients_y, control_points_y)
+    mesh.geometry.x[:, 0] += 0.02 * bp_x(mesh.geometry.x[:, 1])
+    '''
+
+    with dolfinx.io.XDMFFile(mesh.comm,
+                            f"ffd/deformed_mesh_cp_{cp}.xdmf", "w") as mesh_file:
+        mesh_file.write_mesh(mesh)
+    mesh.geometry.x[:] = reference_coordinates
