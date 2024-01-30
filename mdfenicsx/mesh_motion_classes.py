@@ -1,15 +1,16 @@
 import dolfinx
-from dolfinx.fem.petsc import *
+from dolfinx.fem.petsc import apply_lifting, assemble_matrix, \
+    assemble_vector, set_bc
 import ufl
 
 from mpi4py import MPI
 import numpy as np
 from petsc4py import PETSc
 
-from abc import abstractmethod
+from abc import ABC, abstractmethod
 
 
-class MeshDeformation(object):
+class MeshDeformation(ABC):
     def __init__(self, mesh, boundaries, bc_markers_list, bc_function_list,
                  reset_reference=False, is_deformation=True):
         '''
@@ -93,13 +94,13 @@ class MeshDeformation(object):
         bcs = self.assemble_bcs()
         a_form = self.bilinear_form()
         l_form = self.linear_form()
-        A = dolfinx.fem.petsc.assemble_matrix(a_form, bcs=bcs)
+        A = assemble_matrix(a_form, bcs=bcs)
         A.assemble()
-        F = dolfinx.fem.petsc.assemble_vector(l_form)
-        dolfinx.fem.petsc.apply_lifting(F, [a_form], [bcs])
+        F = assemble_vector(l_form)
+        apply_lifting(F, [a_form], [bcs])
         F.ghostUpdate(addv=PETSc.InsertMode.ADD,
                       mode=PETSc.ScatterMode.REVERSE)
-        dolfinx.fem.petsc.set_bc(F, bcs)
+        set_bc(F, bcs)
         ksp = PETSc.KSP()
         ksp.create(self._mesh.comm)
         ksp.setOperators(A)
