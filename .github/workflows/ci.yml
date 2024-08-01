@@ -24,7 +24,7 @@ jobs:
         with:
           python-version: ${{ matrix.python-version }}
       - name: Print PWD
-        run: echo $PWD
+        run: echo $PWD && ls
       - name: Install flake8
         uses: py-actions/flake8@v2
         with:
