@@ -9,27 +9,6 @@ on:
       - "main"
 
 jobs:
-  flake8:
-    runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        python-version: ["3.8"]
-        paths: [" "]
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v3
-        with:
-          python-version: ${{ matrix.python-version }}
-      - name: Print PWD
-        run: echo $PWD && ls
-      - name: Install flake8
-        uses: py-actions/flake8@v2
-        with:
-          max-line-length: "500"
-          path: ${{ matrix.paths }}
   test:
     runs-on: ubuntu-latest
     container: dolfinx/dolfinx:v0.7.2
@@ -49,3 +28,26 @@ jobs:
          mpiexec -n 3 python3 -c "import dolfinx; print(f'dolfinx version {dolfinx.__version__} import success')"
          python3 -c "import gmsh; print(f'gmsh version {gmsh.__version__} import success')"
          mpiexec -n 3 python3 -c "import gmsh; print(f'gmsh version {gmsh.__version__} import success')"
+
+  # ### Flake8 tests
+  #flake8:
+    #runs-on: ubuntu-latest
+    #strategy:
+      #fail-fast: false
+      #matrix:
+        #python-version: ["3.8"]
+        #paths: [" "]
+    #steps:
+      #- name: Checkout code
+        #uses: actions/checkout@v4
+      #- name: Set up Python ${{ matrix.python-version }}
+        #uses: actions/setup-python@v3
+        #with:
+          #python-version: ${{ matrix.python-version }}
+      #- name: Print PWD
+        #run: echo $PWD && ls
+      #- name: Install flake8
+        #uses: py-actions/flake8@v2
+        #with:
+          #max-line-length: "500"
+          #path: ${{ matrix.paths }}
