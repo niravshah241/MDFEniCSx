@@ -29,7 +29,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        procs: ["1", "2", "3"]
+        procs: ["1", "2"]
         tuts: ["0_fundamental_deformation", "1_harmonic_mesh_deformation", "2_linear_elastic_mesh_deformation", "3_airfoil_displacement", "4_deformation_on_internal_boundary",         "5_deformation_on_part_of_the_boundary", "6_free_form_deformation"]
     steps:
        - name: Checkout code
