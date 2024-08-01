@@ -26,8 +26,8 @@ jobs:
     container: dolfinx/dolfinx:v0.7.2
     strategy:
       fail-fast: false
-    matrix:
-      procs: ["1", "2", "3"]
+      matrix:
+        procs: ["1", "2", "3"]
     steps:
        - name: Checkout code
          uses: actions/checkout@v4
