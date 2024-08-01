@@ -1,4 +1,4 @@
-name: MDFEniCSx CI|
+name: MDFEniCSx CI
 
 on:
   push:
@@ -26,14 +26,14 @@ jobs:
        - name: Test dolfinx
          run: |
            python3 --version
-           python3 -c "import ufl; print('ufl import success')"
-           mpiexec -n 3 python3 -c "import ufl; print('ufl import success')"
-           python3 -c "from mpi4py import MPI; print('MPI import success')"
-           mpiexec -n 3 python3 -c "from mpi4py import MPI; print('MPI import success')"
-           python3 -c "import dolfinx; print('dolfinx import success')"
-           mpiexec -n 3 python3 -c "import dolfinx; print(f'dolfinx version {dolfinx.__version__} import success')"
+           python3 -c "import ufl; print(f'ufl version {ufl.__version__} import success')"
+           mpiexec -n 3 python3 -c "import ufl; print(f'ufl version {ufl.__version__} import success (parallel)')"
+           python3 -c "from mpi4py import MPI; print(f'MPI version {MPI.__version__} import success')"
+           mpiexec -n 3 python3 -c "from mpi4py import MPI; print(f'MPI version {MPI.__version__} import success (parallel)')"
+           python3 -c "import dolfinx; print(f'dolfinx version {dolfinx.__version__} import success')"
+           mpiexec -n 3 python3 -c "import dolfinx; print(f'dolfinx version {dolfinx.__version__} import success (parallel)')"
            python3 -c "import gmsh; print(f'gmsh version {gmsh.__version__} import success')"
-           mpiexec -n 3 python3 -c "import gmsh; print(f'gmsh version {gmsh.__version__} import success')"
+           mpiexec -n 3 python3 -c "import gmsh; print(f'gmsh version {gmsh.__version__} import success (parallel)')"
 
   # ### Flake8 tests
   #flake8:
@@ -44,8 +44,6 @@ jobs:
         #python-version: ["3.8"]
         #paths: [" "]
     #steps:
-       #- name: Print PWD
-        #run: echo $PWD && ls
       #- name: Install flake8
         #uses: py-actions/flake8@v2
         #with:
