@@ -16,6 +16,7 @@ jobs:
       fail-fast: false
       matrix:
         python-version: ["3.8"]
+        paths: [" ", "mdfenicsx", "mdfenicsx/mesh_data", "mdfenicsx/demo/*/*"]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -23,14 +24,7 @@ jobs:
         uses: py-actions/flake8@v2
         with:
           max-line-length: "80"
-      - name: Flake8 lint
-        run: |
-          flake8 ./mdfenicsx/mesh_data/mesh.py
-          flake8 ./mdfenicsx/mesh_motion_classes.py
-          flake8 ./demo/0_fundamental_deformation/0_fundamentals.py
-          flake8 ./demo/0_fundamental_deformation/mesh_data/mesh.py
-          flake8 ./demo/*/*.py
-          flake8 ./demo/*/mesh_data/mesh.py
+          path: ${{ matrix.paths }}
       - name: Test dolfinx
         run: |
          python3 --version
@@ -42,3 +36,12 @@ jobs:
          mpiexec -n 3 python3 -c "import dolfinx; print(f'dolfinx version {dolfinx.__version__} import success')"
          python3 -c "import gmsh; print(f'gmsh version {gmsh.__version__} import success')"
          mpiexec -n 3 python3 -c "import gmsh; print(f'gmsh version {gmsh.__version__} import success')"
+
+#- name: Flake8 lint
+#run: |
+    #flake8 ./mdfenicsx/mesh_data/mesh.py
+    #flake8 ./mdfenicsx/mesh_motion_classes.py
+    #flake8 ./demo/0_fundamental_deformation/0_fundamentals.py
+    #flake8 ./demo/0_fundamental_deformation/mesh_data/mesh.py
+    #flake8 ./demo/*/*.py
+    #flake8 ./demo/*/mesh_data/mesh.py
