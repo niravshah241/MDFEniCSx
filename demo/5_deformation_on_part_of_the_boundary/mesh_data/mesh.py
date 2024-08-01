@@ -62,7 +62,10 @@ gmsh.model.addPhysicalGroup(gdim-1, [7], 7)
 
 gmsh.write("mesh.msh")
 
-gmsh.fltk.run()
+try:
+    gmsh.fltk.run()
+except:
+    pass
 
 gmsh.finalize()
 

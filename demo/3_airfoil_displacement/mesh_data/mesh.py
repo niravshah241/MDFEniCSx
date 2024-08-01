@@ -150,7 +150,10 @@ gmsh.model.occ.remove(gmsh.model.getEntities(dim=0))
 
 gmsh.write(os.path.join(dir,"mesh.msh"))
 
-gmsh.fltk.run()
+try:
+    gmsh.fltk.run()
+except:
+    pass
 
 # Import mesh in dolfinx
 gmsh_model_rank = 0
