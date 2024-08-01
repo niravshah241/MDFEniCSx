@@ -34,8 +34,8 @@ gdim = 2
 gmsh_model_rank = 0
 mesh, subdomains, boundaries = \
     dolfinx.io.gmshio.read_from_msh("mesh_data/mesh.msh",
-                                     mesh_comm, gmsh_model_rank,
-                                     gdim=gdim)
+                                    mesh_comm, gmsh_model_rank,
+                                    gdim=gdim)
 
 # Store REFERENCE mesh coordinates
 reference_coordinates = mesh.geometry.x.copy()
@@ -50,6 +50,8 @@ v = ufl.TestFunction(V)
 bc_list = []
 
 # Bottom boundaries (Boundary markers 1 and 5)
+
+
 def bc_bottom(x):
     return (0. * x[0], 0.2 * np.sin(x[0] * 2 * np.pi))
 
@@ -115,8 +117,8 @@ mesh.geometry.x[:, :mesh.geometry.dim] += \
 
 
 with dolfinx.io.XDMFFile(mesh.comm,
-                        f"deformed_mesh_data/deformed_mesh.xdmf",
-                        "w") as mesh_file_xdmf:
+                         f"deformed_mesh_data/deformed_mesh.xdmf",
+                         "w") as mesh_file_xdmf:
     mesh_file_xdmf.write_mesh(mesh)
     mesh_file_xdmf.write_meshtags(subdomains, mesh.geometry)
     mesh_file_xdmf.write_meshtags(boundaries, mesh.geometry)
