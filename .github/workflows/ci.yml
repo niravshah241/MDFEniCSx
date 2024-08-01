@@ -21,7 +21,7 @@ jobs:
       - name: Install flake8
         uses: py-actions/flake8@v2
         with:
-          max-line-length: "72"
+          max-line-length: "79"
           paths: ${{ matrix.paths }}
   test:
     runs-on: ubuntu-latest
