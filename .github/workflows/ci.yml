@@ -26,12 +26,17 @@ jobs:
     container: dolfinx/dolfinx:v0.7.2
     strategy:
       fail-fast: false
+      procs: ["1", "2", "3"]
     steps:
        - name: Checkout code
          uses: actions/checkout@v4
        - name: Test dolfinx
          run: |
            python3 --version
+           cd demo/0_fundamental_deformation/mesh_data/
+           mpiexec -n 1 python3 mesh.py
+           cd ..
+           mpiexec -n ${{ matrix.procs }} python3 0_fundamentals.py
 
 
   # ### Flake8 tests
