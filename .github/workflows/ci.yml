@@ -38,6 +38,3 @@ jobs:
            mpiexec -n 1 python3 mesh.py
            cd ..
            mpiexec -n ${{ matrix.procs }} python3 0_fundamentals.py
-
-
-  # ### Flake8 tests
