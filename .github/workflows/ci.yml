@@ -16,6 +16,8 @@ jobs:
       matrix:
         paths: [" "]
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
       - name: Install flake8
         uses: py-actions/flake8@v2
         with:
