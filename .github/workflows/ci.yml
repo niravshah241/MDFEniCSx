@@ -20,12 +20,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Install flake8
-        run: |
-          python3 --version
-          python -m pip install flake8
-      - name: Flake8 lint
+        uses: py-actions/flake8@v2
         with:
           max-line-length: "80"
+      - name: Flake8 lint
         run: |
           flake8 ./mdfenicsx/mesh_data/mesh.py
           flake8 ./mdfenicsx/mesh_motion_classes.py
