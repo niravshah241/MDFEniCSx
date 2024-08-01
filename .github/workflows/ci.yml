@@ -13,12 +13,14 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
+      matrix:
+        paths: [" "]
     steps:
       - name: Install flake8
         uses: py-actions/flake8@v2
         with:
           max-line-length: "500"
-          paths: [" "]
+          paths: ${{ matrix.paths }}
   test:
     runs-on: ubuntu-latest
     container: dolfinx/dolfinx:v0.7.2
