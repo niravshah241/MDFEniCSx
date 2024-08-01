@@ -21,7 +21,7 @@ jobs:
       - name: Install flake8
         uses: py-actions/flake8@v2
         with:
-          max-line-length: "500"
+          max-line-length: "72"
           paths: ${{ matrix.paths }}
   test:
     runs-on: ubuntu-latest
@@ -30,7 +30,7 @@ jobs:
       fail-fast: false
       matrix:
         procs: ["1", "2", "3"]
-        tuts: ["0_fundamental_deformation", "1_harmonic_mesh_deformation", "2_linear_elastic_mesh_deformation", "3_airfoil_displacement", "4_deformation_on_internal_boundary", "5_deformation_on_part_of_the_boundary", "6_free_form_deformation"]
+        tuts: ["0_fundamental_deformation", "1_harmonic_mesh_deformation", "2_linear_elastic_mesh_deformation", "3_airfoil_displacement", "4_deformation_on_internal_boundary",         "5_deformation_on_part_of_the_boundary", "6_free_form_deformation"]
     steps:
        - name: Checkout code
          uses: actions/checkout@v4
