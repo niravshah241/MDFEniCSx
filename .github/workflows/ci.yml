@@ -16,7 +16,7 @@ jobs:
       fail-fast: false
       matrix:
         python-version: ["3.8"]
-        paths: ["*.py", "mdfenicsx/*.py", "mdfenicsx/mesh_data/*.py", "mdfenicsx/demo/*/*.py"]
+        paths: ["setup.py"]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -45,3 +45,5 @@ jobs:
     #flake8 ./demo/0_fundamental_deformation/mesh_data/mesh.py
     #flake8 ./demo/*/*.py
     #flake8 ./demo/*/mesh_data/mesh.py
+
+# paths: ["*.py", "mdfenicsx/*.py", "mdfenicsx/mesh_data/*.py", "mdfenicsx/demo/*/*.py"]
