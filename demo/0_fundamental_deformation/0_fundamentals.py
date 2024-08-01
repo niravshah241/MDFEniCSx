@@ -1,23 +1,3 @@
-'''
-The purpose of this excercise is to demonstrate Harmonic mesh extension:
-Shamanskiy, A., Simeon, B. Mesh moving techniques in fluid-structure interaction: robustness, accumulated distortion and computational efficiency. Comput Mech 67, 583–600 (2021). https://doi.org/10.1007/s00466-020-01950-x
-We solve Laplace's equation on the reference domain to calculate pointwise mesh deformation based on the specified mesh deformation on the boundary.
-
-In this example, we consider unit square as the reference domain \Omega. We apply specified mesh displacement on the top (\Gamma_{top} \subset \partial \Omega) and bottom (\Gamma_{bottom}\subset \partial \Omega) boundaries and use Harmonic mesh extension to propoagate the displacement inside the domain.
-
-Reference domain: \Omega = [0, 1]^2 (Unit square)
-Solve Laplace's equation:
-- \Delta u = 0 \ , \ \text{in} \Omega \ ,
-B.C.s ((x, y) \in \Omega):
-On bottom boundary (\Gamma_1 \cup \Gamma_5): u = (0., 0.2 * sin(2 \pi x)) \ , (Specified mesh displacement) \\
-On top boundary (\Gamma_9 \cup \Gamma_{12}): u = (0., 0.1 * sin(2 \pi x)) \ , (Specified mesh displacement) \\
-On left and right boundaries (\Gamma_4 \cup \Gamma_6 \cup \Gamma_{10} \cup \Gamma_{11}):
-u = (0., 0.)
-
-The deformed domain \tilde{\Omega} is given by:
-\tilde{x} = x + u \ , \ \tilde{x} \in \tilde{\Omega} \ , \ x \in \Omega \ .
-'''
-
 from mpi4py import MPI
 from petsc4py import PETSc
 
@@ -87,19 +67,22 @@ these boundaries are considered as zero NEUMANN boundary conditions
 '''
 
 # We now solve Laplace's equation on the REFERENCE mesh
-a_form = dolfinx.fem.form(ufl.inner(ufl.grad(u), ufl.grad(v))*ufl.dx)
+a_form = dolfinx.fem.form(ufl.inner(ufl.grad(u),
+                                    ufl.grad(v)) * ufl.dx)
 l_form = \
     dolfinx.fem.form(ufl.inner(dolfinx.fem.Constant
-                               (mesh, PETSc.ScalarType((0.,) * mesh.geometry.dim)),
-                               v) * ufl.dx)
+                               (mesh,
+                                PETSc.ScalarType((0.,) *
+                                                 mesh.geometry.dim)
+                                ), v) * ufl.dx)
 
 uh = dolfinx.fem.Function(V)
 A = assemble_matrix(a_form, bcs=bc_list)
 A.assemble()
 F = assemble_vector(l_form)
-dolfinx.fem.petsc.apply_lifting(F, [a_form], [bc_list])
+apply_lifting(F, [a_form], [bc_list])
 F.ghostUpdate(addv=PETSc.InsertMode.ADD, mode=PETSc.ScatterMode.REVERSE)
-dolfinx.fem.petsc.set_bc(F, bc_list)
+set_bc(F, bc_list)
 ksp = PETSc.KSP()
 ksp.create(mesh.comm)
 ksp.setOperators(A)
@@ -117,7 +100,7 @@ mesh.geometry.x[:, :mesh.geometry.dim] += \
 
 
 with dolfinx.io.XDMFFile(mesh.comm,
-                         f"deformed_mesh_data/deformed_mesh.xdmf",
+                         "deformed_mesh_data/deformed_mesh.xdmf",
                          "w") as mesh_file_xdmf:
     mesh_file_xdmf.write_mesh(mesh)
     mesh_file_xdmf.write_meshtags(subdomains, mesh.geometry)
