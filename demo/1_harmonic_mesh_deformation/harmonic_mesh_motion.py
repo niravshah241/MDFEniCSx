@@ -5,7 +5,6 @@ import numpy as np
 
 from mpi4py import MPI
 
-
 np.set_printoptions(formatter={'float_kind': "{:.3f}".format})
 
 # Read mesh
