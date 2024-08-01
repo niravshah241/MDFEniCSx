@@ -152,7 +152,7 @@ gmsh.write(os.path.join(dir,"mesh.msh"))
 
 try:
     gmsh.fltk.run()
-except:
+except Exception:
     pass
 
 # Import mesh in dolfinx

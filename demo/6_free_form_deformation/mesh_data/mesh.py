@@ -84,7 +84,7 @@ gmsh.write("mesh.msh")
 
 try:
     gmsh.fltk.run()
-except:
+except Exception:
     pass
 
 gmsh.finalize()
