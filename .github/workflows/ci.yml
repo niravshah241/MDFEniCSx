@@ -16,8 +16,6 @@ jobs:
     steps:
       - name: Install flake8
         uses: py-actions/flake8@v2
-        env:
-          ignore=E128
         with:
           max-line-length: "500"
           path: [" "]
