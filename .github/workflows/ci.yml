@@ -40,5 +40,5 @@ jobs:
            cd demo/${{ matrix.tuts }}/mesh_data/
            mpiexec -n 1 python3 mesh.py
            cd ..
-           mpiexec -n ${{ matrix.procs }} python3 *
+           mpiexec -n ${{ matrix.procs }} python3 *.py
            cd ..
