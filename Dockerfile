@@ -7,4 +7,4 @@ COPY demo .
 
 RUN pip install git+https://github.com/niravshah241/MDFEniCSx.git
 
-# ENTRYPOINT ["echo", "Hello-world"]
+CMD ["sleep", "infinity"]
