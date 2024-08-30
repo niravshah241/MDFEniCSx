@@ -109,6 +109,9 @@ class MeshDeformation(ABC):
         ksp.getPC().setFactorSolverType("mumps")
         ksp.setFromOptions()
         ksp.solve(F, uh.vector)
+        ksp.destroy()
+        A.destroy()
+        F.destroy()
         uh.x.scatter_forward()
         return uh
 
@@ -166,7 +169,7 @@ class LinearElasticMeshMotion(MeshDeformation):
                                                             ("DG", 0))
         # Function for Lam\'e parameter lambda = E / (2 * (1 + \nu))
         lambda_ = dolfinx.fem.Function(material_function_space)
-        # Function for Lam\'e parameter mu = (E * \nu) / ((1-2*\nu) * (1+\nu))
+        # Function for Lam\'e parameter mu_ = (E * \nu) / ((1-2*\nu) * (1+\nu))
         mu_ = dolfinx.fem.Function(material_function_space)
         # Assemble discontinuous material property functions
         for i in range(len(self._young_modulus_list)):

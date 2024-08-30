@@ -91,6 +91,9 @@ ksp.getPC().setType("lu")
 ksp.getPC().setFactorSolverType("mumps")
 ksp.setFromOptions()
 ksp.solve(F, uh.vector)
+ksp.destroy()
+A.destroy()
+F.destroy()
 uh.x.scatter_forward()
 
 # uh now corresponds to the displacement of each node.
