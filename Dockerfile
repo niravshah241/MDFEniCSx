@@ -2,10 +2,10 @@
 FROM dolfinx/dolfinx:v0.7.3
 
 # Set work directory
-RUN mkdir -p /home/app
-WORKDIR /home/app
+RUN mkdir -p /home/mdfenicsx
+WORKDIR /home/mdfenicsx
 
-# Install MDFEniCSx
+# Install MDFEniCSx from github
 RUN pip install git+https://github.com/niravshah241/MDFEniCSx.git
 
 # Keep container alive

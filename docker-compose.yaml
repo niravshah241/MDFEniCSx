@@ -1,0 +1,8 @@
+services:
+  mdfenicsx:
+    image: mdfenicsx:no-tag
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      tags:
+        - "mdfenicsx:no-tag"

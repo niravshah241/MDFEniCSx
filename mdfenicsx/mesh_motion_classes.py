@@ -109,6 +109,7 @@ class MeshDeformation(ABC):
         ksp.getPC().setFactorSolverType("mumps")
         ksp.setFromOptions()
         ksp.solve(F, uh.vector)
+        # .destroy() objects which are no longer needed
         ksp.destroy()
         A.destroy()
         F.destroy()
